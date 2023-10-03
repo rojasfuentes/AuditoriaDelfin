@@ -2,15 +2,15 @@
   <div class="main_header">
     <div class="header_top">
       <div class="header_top__icons">
-        <i class="header_top__icons___facebook">Fb</i>
-        <i class="header_top__icons___youtube">YT</i>
+        <font-awesome-icon class="icon header_top__icons___facebook" icon="fa-brands fa-facebook-f" />
+        <font-awesome-icon class="icon header_top__icons___youtube" icon="fa-brands fa-youtube" />
         <div class="header_top__icons__mail">
-          <i class="header_top__icons___mailIcon">X</i>
+          <font-awesome-icon class="icon header_top__icons___mailIcon" icon="fa-solid fa-envelope" />
           <span class="header_top__icons___mailMessage">Contacto</span>
         </div>
         <span class="header_top__icons___pipe">|</span>
         <div class="header_top__icons___loging">
-          <i class="header_top__icons___logingIcon">X</i>
+          <font-awesome-icon class="icon header_top__icons___logingIcon" icon="fa-solid fa-user" />
           <span class="header_top__icons___logingMessage">Ingresar</span>
         </div>
       </div>
@@ -41,13 +41,14 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .main_header {
   background-color: var(--white);
   height: 14.4vh;
   width: 100vw;
   color: var(--white);
   font-family: "Raleway", sans-serif;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header_top {
@@ -98,11 +99,20 @@ export default {};
 
 .menuItem{
   padding: 2rem 1rem;
-  transition: 0.5s ease;
+  transition: ease;
   cursor: pointer;
 }
 
 .menuItem:hover{
   color: var(--main-orange);
+}
+
+.icon{
+  cursor: pointer;
+}
+
+.header_top__icons___mailIcon, 
+.header_top__icons___logingIcon{
+  margin-right: 0.5em;
 }
 </style>

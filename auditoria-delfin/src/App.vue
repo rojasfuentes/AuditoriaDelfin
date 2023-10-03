@@ -1,26 +1,30 @@
 <template>
-  <Header/>
+  <Header />
+  <Welcome />
+  <Footer/>
 </template>
 
 <script>
 import Header from "./components/layout/HeaderDesktop.vue";
+import Footer from "./components/layout/FooterDesktop.vue";
+import Welcome from "./components/Welcome/WelcomeScreen.vue"
 
 export default {
   name: "App",
   components: {
     Header,
+    Footer,
+    Welcome
   },
 };
 </script>
 
 <style>
-body {
-  background-color: bisque;
-}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #app {
