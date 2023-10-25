@@ -8,9 +8,9 @@ npm install
 
 ## Activar el entorno local (Servidor que despliega las vistas).
 El siguiente comando realizará el montaje de nuestras interfaces en un entorno local...
-__ EXTREMADAMENTE ÚTIL PARA DEBUGGEAR __
-__ NO SERVIRÁ CON EL SERVIDOR DE LA APP, SOLO ES PARA VER LAS INTERFACES __
-__ PARA VER EL SERVIDOR EN ACCIÓN, UTILIZAR EL PROYECTO CONJUNTO: [Alvirelwapo/ProyectoSalas](https://github.com/AlvirElWapo/Proyecto_Salas)
+*** EXTREMADAMENTE ÚTIL PARA DEBUGGEAR
+NO SERVIRÁ CON EL SERVIDOR DE LA APP, SOLO ES PARA VER LAS INTERFACES
+PARA VER EL SERVIDOR EN ACCIÓN, UTILIZAR EL PROYECTO CONJUNTO: [Alvirelwapo/ProyectoSalas](https://github.com/AlvirElWapo/Proyecto_Salas)***
 ```
 npm run serve
 ```
