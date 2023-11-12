@@ -1,7 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
-
-module.exports = defineConfig(
-{
+module.exports = defineConfig({
   transpileDependencies: true,
   pages: {
     login: {
@@ -13,6 +11,11 @@ module.exports = defineConfig(
       entry: './src/pages/mainpage/main.js',
       template: './public/index.html',
       filename: 'mainpage.html',
+    },
+    usermenu: {
+      entry: './src/pages/usermenu/main.js',
+      template: './public/index.html',
+      filename: 'usermenu.html',
     },
   },
 })

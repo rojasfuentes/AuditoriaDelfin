@@ -8,22 +8,27 @@
           <font-awesome-icon class="icon header_top__icons___mailIcon" icon="fa-solid fa-envelope" />
           <span class="header_top__icons___mailMessage">Contacto</span>
         </div>
+
         <span class="header_top__icons___pipe">|</span>
         <div class="header_top__icons___loging">
           <font-awesome-icon class="icon header_top__icons___logingIcon" icon="fa-solid fa-user" />
           <span class="header_top__icons___logingMessage">Ingresar</span>
         </div>
+
+
       </div>
     </div>
     <div class="header_bottom">
       <div class="header_bottom__container">
+        <router-link to="/">
         <img
           src="@/assets/images/logo.png"
           alt="logo"
           class="header_bottom__containerLogo"
         />
+         </router-link>
         <div class="header_bottom__containerMenu">
-          <div class="menuItem header_bottom__containerMenu___Inicio">INICIO</div>
+          <div class="menuItem header_bottom__containerMenu___Inicio" @click="mainpage">INICIO</div>
           <div class="menuItem header_bottom__containerMenu___Inicio">PROGRAMA</div>
           <div class="menuItem header_bottom__containerMenu___Inicio">ESTUDIANTES</div>
           <div class="menuItem header_bottom__containerMenu___Inicio">
@@ -38,7 +43,24 @@
 </template>
 
 <script>
-export default {};
+
+
+export default {
+  methods: {
+    async mainpage()
+    {
+      try 
+      {
+        //const response = await axios.post('/login', this.userData);
+        //console.log(response);
+        this.$router.push({name:"mainpage"});
+      } catch (error) 
+      {
+        console.log(error);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -18,30 +18,88 @@
         alt="logo"
       />
     </div>
-    <div class="floating-login-form" v-if="showHiddenComponent">
-      
-      <h5 style="font-size: 18px;">INICIAR SESIÓN</h5>
-      <form id="loginForm" action="your-login-action.php" method="post">
-        <div class="form-group">
-          <label for="username">Usuario:</label>
-          <input type="text" id="username" name="username" class="form-control" required placeholder="Usuario">
+
+  <div class="floating-login-form" v-if="showHiddenComponent">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close-button" @click="showHiddenComponent = false">
+          x
+        </button>
+        <div class="section-title text-left mt-2 mb-2">
+          <h5 style="font-size: 18px;">INICIAR SESIÓN</h5>
         </div>
-        <div class="form-group">
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" class="form-control" required placeholder="Contraseña">
-        </div>
-        <button type="submit" class="btn btn-primary">Entrar</button>
-      </form>
+        <form id="form2" name="form2" @submit.prevent="login" method="post">
+          <div class="row">
+            <div class="col-md-12 pb-2">
+              <div class="single-form form-group">
+
+                <input type="text" id="login" name="login"
+                class="form-control" required="required" 
+                placeholder="Usuario" v-model="userData.username">
+
+              </div>
+            </div>
+            <div class="col-md-12 pb-2">
+              <div class="single-form form-group">
+
+                <input type="password" id="pass" name="pass" 
+                class="form-control" required="required" 
+                placeholder="Contraseña" v-model="userData.password">
+
+              </div>
+            </div>
+            <div class="col-md-12 pb-2">
+              <div class="single-form form-group">
+
+
+                <button type="submit" name="boton" 
+                id="boton" class="main-btn" @click="login">
+                Entrar
+                </button>
+
+
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+</div>
+
+
+
+</div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
-      showHiddenComponent: false, // Initially hidden
+      showHiddenComponent: false,
+      userData: {
+        username: '',
+        password: '',
+      },
     };
+  },
+  methods: {
+    async login()
+    {
+try {
+        const response = await axios.post('/login', this.userData);
+        console.log(response);
+        this.$router.push({name: ""})
+    } catch (error) 
+    {
+      console.log(error);
+      this.$router.push({ name: 'login' });
+    }
+  },
+
+
   },
 };
 </script>
@@ -50,11 +108,24 @@ export default {
 
 <style scoped>
 
-.hidden-component {
-  display: block; /* Initially shown */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; /* Adjust the size as needed */
+  color: #f48120; /* Button color */
+  z-index: 9999; 
 }
 
-.floating-login-form {
+.close-button:hover {
+  color: #005289; /* Hover color */
+}
+
+.floating-login-form 
+{
   position: fixed;
   top: 50%;
   left: 50%;
@@ -63,8 +134,28 @@ export default {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 9999; /* Ensures it appears on top of everything else */
+  z-index: 9998; 
 }
+.section-title{}
+.section-title h5{
+    color: #005289;
+    position: relative;
+    padding-bottom: 12px; margin-bottom:15px; font-size: 30px;
+}
+.section-title h5::before{
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background-color: #f48120;
+    bottom: 0;
+    left: 0;
+}
+.section-title h2{
+    font-size: 38px;
+    padding-top: 10px;
+}
+
 
 .section-title{}
 .section-title h5{
@@ -150,6 +241,81 @@ export default {
 .welcome_container_brands {
   width: 100vw;
   height: 20vh;
+}
+
+.main-btn {
+	display: inline-block;
+	font-weight: 500;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid #f48120;
+	padding: 0 35px;
+	font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+	line-height: 50px;
+	border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 5;
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+    background-color: #f48120;
+}
+.main-btn:hover{
+    color: #fff;
+    border-color: #005289;
+    background-color: #005289;
+}
+
+.main-btn-3 {
+	display: inline-block;
+	font-weight: 500;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid #005289;
+	padding: 0 35px;
+	font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+	line-height: 50px;
+	border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 5;
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+    background-color: #005289;
+}
+.main-btn-3:hover{
+    color: #fff;
+    border-color: #f48120;
+    background-color: #f48120;
+}
+
+.main-btn-2{
+    color: #f48120;
+    border-color: #005289;
+    background-color: #005289;
+}
+.main-btn-2:hover{
+    color: #005289;
+    background-color: #f48120;
+    border-color: #f48120;
 }
 
 </style>
