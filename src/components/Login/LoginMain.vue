@@ -1,3 +1,6 @@
+<!-- ┓┏  ┏┳┓  ┳┳┓  ┓  -->
+<!-- ┣┫   ┃   ┃┃┃  ┃  -->
+<!-- ┛┗   ┻   ┛ ┗  ┗┛ -->
 <template>
   <div class="main_container">
     <div class="main_row">
@@ -5,31 +8,29 @@
         <h1 class="main_row__login___title">INICIAR SESIÓN</h1>
         <div class="main_row__login___credentials">
           <div class="main_row__login___credentials____user">
-            <span class="main_row__login___credentials____user_____label"
-              >Usuario:</span>
+            <span class="main_row__login___credentials____user_____label">Usuario:</span>
             <input
               type="text"
               class="main_row__login___credentials____user_____input"
+              v-model="userData.username"
             />
           </div>
           <div class="main_row__login___credentials____pass">
-            <span class="main_row__login___credentials____pass____label"
-              >Contraseña:</span>
+            <span class="main_row__login___credentials____pass____label">Contraseña:</span>
             <input
-              type="text"
+              type="password"
               class="main_row__login___credentials____pass_____input"
+              v-model="userData.password"
             />
           </div>
         </div>
-        <button class="main_row__login___button">Entrar</button>
-        <span class="main_row__login___recoverMessage"
-          >Recuperar mis datos de Sesión</span
-        >
+        <button class="main_row__login___button" @click="login">Entrar</button>
+        <span class="main_row__login___recoverMessage">Recuperar mis datos de Sesión</span>
       </div>
       <div class="main_row__message">
         <h1 class="main_row__message___mainInfo">No se pudo iniciar Sesión</h1>
         <span class="main_row__message___secondaryInfo"
-          >Lo sentimos, no se ingreso a la sesión. No exite una cuenta activa
+          >Lo sentimos, no se ingreso a la sesión. No exite una cuenta activa;
           para esos datos de sesión o el nombre de usuario y/o contraseña de
           acceso estan incorrectos, intentelo de nuevo.</span
         >
@@ -38,10 +39,42 @@
   </div>
 </template>
   
-  <script>
-export default {};
-</script>
+<!-- ┏┓         •          -->
+<!-- ┗┓  ┏  ┏┓  ┓  ┏┓  ╋   -->
+<!-- ┗┛  ┗  ┛   ┗  ┣┛  ┗   -->
   
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      userData: {
+        username: '',
+        password: '',
+      },
+    };
+  },
+  methods: 
+  {
+    async login() 
+    {
+      try 
+      {
+        const response = await axios.post('/login', this.userData);
+        console.log(response);
+      } catch (error) 
+      {
+        console.log(error);
+      }
+    },
+  },
+};
+</script>
+
+<!-- ┏┓  ┏┳┓  ┓┏  ┓   ┏┓ -->
+<!-- ┗┓   ┃   ┗┫  ┃   ┣  -->
+<!-- ┗┛   ┻   ┗┛  ┗┛  ┗┛ -->
+
   <style scoped>
 .main_container {
   width: 100vw;
@@ -58,6 +91,7 @@ export default {};
 
 .main_row__login {
   width: 26.6%;
+
   height: 100%;
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/scss/main.scss'
+import App from './login.vue'
+import router from '../../router'
+import '../../assets/scss/main.scss'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -12,5 +13,6 @@ import { faFacebook, faFacebookF, faYoutube} from "@fortawesome/free-brands-svg-
 library.add(faUserSecret, faHouse, faPhone, faEnvelope, faFacebook, faFacebookF, faChevronRight, faFlagCheckered, faYoutube, faUser)
 
 createApp(App)
+    .use(router)
     .component('font-awesome-icon', FontAwesomeIcon)
-    .mount('#app')
+    .mount('#login')
